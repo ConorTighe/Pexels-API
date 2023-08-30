@@ -1,0 +1,21 @@
+.Cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+  }
+
+.Card {
+    width: 250px;
+    height: 280px;
+    margin-bottom: 25px;
+}
+
+.Author {
+    display: flex;
+    flex-direction: column;
+}
