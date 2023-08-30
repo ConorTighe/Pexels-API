@@ -1,4 +1,4 @@
-export type TView =  "card" | "json" | "list";
+export type TView =  "card" | "json" | "list" | "grid" | "accordion" | "carousel";
 
 export interface IViews {
     label: string;

@@ -1,8 +1,6 @@
 import React from 'react'
-import {fireEvent, getByAltText, render, screen} from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import SelectView from ".."
-import { TView } from '../../../interfaces/views';
 import Views from '..';
 import { generateTestPhotos } from '../../../utils/test-utils';
 import { IPhoto } from '../../../interfaces/photos';
@@ -11,25 +9,7 @@ import axios from "axios";
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe("usePhotosContext", () => {
-
-    // beforeAll(() => {
-    //   class ResizeObserver {
-    //     observe() {
-    //         // do nothing
-    //     }
-    //     unobserve() {
-    //         // do nothing
-    //     }
-    //     disconnect() {
-    //         // do nothing
-    //       }
-    //   }
-
-    //   window.ResizeObserver = ResizeObserver;
-    // })
-
-      
+describe("ViewFactory", () => {
  
     test('View factory works with given card type', () => {
 
@@ -46,6 +26,20 @@ describe("usePhotosContext", () => {
       
       })
 
+      test('View factory works with given accordion type', () => {
+
+        const expectedValues: IPhoto[] = generateTestPhotos()
+
+        mockedAxios.get.mockResolvedValue({ data: { photos: expectedValues } });
+
+        render(<Views view={"accordion"} photos={expectedValues} />)
+
+        expectedValues.forEach((photo) => {
+          expect(screen.getByText(`${photo.alt} by ${photo.photographer}`)).toBeInTheDocument();
+        })
+      
+      })
+
       test('View factory works with given list type', () => {
 
         const expectedValues: IPhoto[] = generateTestPhotos()
@@ -54,8 +48,10 @@ describe("usePhotosContext", () => {
 
         render(<Views view={"list"} photos={expectedValues} />)
 
-        expectedValues.forEach((photo) => {
-          expect(screen.getByText(`${photo.alt} by ${photo.photographer}`)).toBeInTheDocument();
+        const listText = screen.getAllByText(`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`)
+
+        listText.forEach((text) => {
+          expect(text).toBeInTheDocument();
         })
       
       })

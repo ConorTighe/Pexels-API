@@ -9,12 +9,11 @@ dotenv.config();
 
 app.use(cors())
 
-console.log(process.env.PEXEL_API_KEY)
-
-app.use(function(req, res, next) {
-    res.setHeader('Authorization', process.env.PEXEL_API_KEY)
-    next()
-});
+// PROD SOLUTION FOR API
+// app.use(function(req, res, next) {
+//     res.setHeader('Authorization', process.env.PEXEL_API_KEY)
+//     next()
+// });
 
 app.use(createProxyMiddleware({
   router: (req) => new URL(req.path.substring(1)),

@@ -6,9 +6,8 @@ import { useState } from 'react';
 import Views from './components/view-factory';
 
 function App() {
-  const [view, setView] = useState<TView>("card");
+  const [view, setView] = useState<TView>("list");
   const { photos } = usePhotosContext()
-
 
   const handleSelectView = (value: TView) => {
     setView(value)

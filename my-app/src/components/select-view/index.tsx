@@ -7,18 +7,32 @@ interface IProps {
     handleSelectView: (value: TView) => void;
 }
 
-const views: IViews[] = [{
-  label: "Cards",
-  value: "card"
-},
-{
-  label: "List",
-  value: "list"
-},
-{
-  label: "API",
-  value: "json"
-}]
+const views: IViews[] = [
+  {
+    label: "List",
+    value: "list"
+  },
+  {
+    label: "Accord",
+    value: "accordion"
+  },
+  {
+    label: "Grid",
+    value: "grid"
+  },
+  {
+    label: "API",
+    value: "json"
+  },
+  {
+    label: "Cards",
+    value: "card"
+  },
+  {
+    label: "Carousel",
+    value: "carousel"
+  }
+]
 
 function SelectView({ selected, handleSelectView }: IProps) {
   return (

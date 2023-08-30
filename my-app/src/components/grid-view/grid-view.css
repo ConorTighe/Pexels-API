@@ -1,0 +1,16 @@
+.Grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 28px;
+  }
+
+.Grid-img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 25px;
+}

@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext } from 'react';
+import { createContext, PropsWithChildren, useContext, useMemo } from 'react';
 import { IPhoto, TDisplayedImages } from '../../interfaces/photos';
 import usePhotos from '../../hooks/use-photos';
 
