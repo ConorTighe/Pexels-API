@@ -1,17 +1,16 @@
-import React from 'react';
-import { IPhoto } from '../../interfaces/photos';
-import "./api-view.css"
+import { type IPhoto } from '../../interfaces/photos';
+import './api-view.css';
 
 interface ICardsProps {
-    photos: IPhoto[]
+  photos: IPhoto[];
 }
 
-function PexelsApiRaw({ photos }: ICardsProps) {
-    return (
-        <div className='Json-view'>
-            <pre>{JSON.stringify(photos, null, 2)}</pre>
-        </div>
-    )
+function PexelsApiRaw({ photos }: ICardsProps): JSX.Element {
+  return (
+    <div className='Json-view'>
+      <pre>{JSON.stringify(photos, null, 2)}</pre>
+    </div>
+  );
 }
 
-export default PexelsApiRaw
+export default PexelsApiRaw;

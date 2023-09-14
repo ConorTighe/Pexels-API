@@ -1,42 +1,38 @@
-import React from 'react'
-import {fireEvent, render, screen} from '@testing-library/react'
-import '@testing-library/jest-dom'
-import SelectView from ".."
-import { TView } from '../../../interfaces/views';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import SelectView from '..';
+import { type TView } from '../../../interfaces/views';
 
-describe("usePhotosContext", () => {
-
-    beforeAll(() => {
-      class ResizeObserver {
-        observe() {
-            // do nothing
-        }
-        unobserve() {
-            // do nothing
-        }
-        disconnect() {
-            // do nothing
-          }
+describe('usePhotosContext', () => {
+  beforeAll(() => {
+    class ResizeObserver {
+      observe() {
+        // do nothing
       }
 
-      window.ResizeObserver = ResizeObserver;
-    })
+      unobserve() {
+        // do nothing
+      }
 
-      
- 
-    test('View selector works with given valid type', () => {
-        const expectedView: TView = "card"
-        const handleSelectView = jest.fn((v: TView) => v)
+      disconnect() {
+        // do nothing
+      }
+    }
 
-        render(<SelectView selected={expectedView} handleSelectView={handleSelectView} />)
+    window.ResizeObserver = ResizeObserver;
+  });
 
-        screen.getByText("Cards")
+  test('View selector works with given valid type', () => {
+    const expectedView: TView = 'card';
+    const handleSelectView = jest.fn((v: TView) => v);
 
-        fireEvent.click(screen.getByText('List'))
+    render(<SelectView selected={expectedView} handleSelectView={handleSelectView} />);
 
-        expect(handleSelectView).toBeCalledTimes(1);
-        expect(handleSelectView).toReturnWith("list");
-      
-      })
+    screen.getByText('Cards');
 
+    fireEvent.click(screen.getByText('List'));
+
+    expect(handleSelectView).toBeCalledTimes(1);
+    expect(handleSelectView).toReturnWith('list');
+  });
 });
